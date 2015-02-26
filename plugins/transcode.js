@@ -30,8 +30,10 @@ var transcode = function(ctx, next) {
     });
 
     var trans = new Transcoder(s)
-      .videoCodec('h264')
+      .videoCodec('copy')
+      .audioCodec('aac')
       .format('mp4')
+      .custom('ac', '2')
       .custom('strict', 'experimental')
       .on('finish', function() {
         debug('finished transcoding');
